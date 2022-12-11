@@ -127,7 +127,7 @@ class Program
         }
         if ((array[0, 2] == array[1, 1]) && (array[1, 1] == array[2, 0]))
         {
-            Console.WriteLine("You won in middle vertical!");
+            Console.WriteLine("You won in right diagonal!");
             Console.WriteLine("Thanks for playing!");
             Environment.Exit(0);
         }
