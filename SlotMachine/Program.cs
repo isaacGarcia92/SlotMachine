@@ -10,25 +10,43 @@ class Program
         // Random variable
         Random rand = new Random();
 
-        // Filling array with random number
-        for(int row=0; row<3; row++)
-        {
-            for (int col=0; col<3; col++)
-            {
-                int randomNumber = rand.Next(0, 3);
-                Console.Write($"{slotMachineGrid[row, col] = randomNumber} ");
-            }
-            Console.WriteLine();
-        }
+        Console.WriteLine("Type spacebar to start the slot machine or Enter to exit");
 
-        // Check if middle row is all the same
-        if ((slotMachineGrid[1, 0] == slotMachineGrid[1, 1]) && (slotMachineGrid[1, 1] == slotMachineGrid[1, 2]))
+        while(true)
         {
-            Console.WriteLine("You won!");
-        }
-        else
-        {
-            Console.WriteLine("You lost!");
+            ConsoleKey key = Console.ReadKey().Key;
+            if(key == ConsoleKey.Spacebar)
+            {
+                Console.Clear();
+                for (int row = 0; row < 3; row++)
+                {
+                    for (int col = 0; col < 3; col++)
+                    {
+                        int randomNumber = rand.Next(0, 3);
+                        Console.Write($"{slotMachineGrid[row, col] = randomNumber} ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+
+            if(key == ConsoleKey.Enter)
+            {
+                Console.WriteLine("Thanks for playing!");
+                return;
+            }
+
+            if ((slotMachineGrid[1, 0] == slotMachineGrid[1, 1]) && (slotMachineGrid[1, 1] == slotMachineGrid[1, 2]))
+            {
+                Console.WriteLine("You won!");
+                Console.WriteLine("Thanks for playing!");
+                return;
+            }
+
+            else
+            {
+                Console.WriteLine("You lost!");
+                Console.WriteLine("Try again with spacebar to keep playing!");
+            }
         }
     }
 }
