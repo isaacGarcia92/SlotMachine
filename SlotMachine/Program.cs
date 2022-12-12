@@ -2,6 +2,13 @@
 
 class Program
 {
+    enum TypeOfLine
+    {
+        Horizontal = 'h',
+        Vertical = 'v',
+        Diagonal = 'd',
+    }
+
     static void Main(string[] args)
     {
         // 2D Array
@@ -9,15 +16,20 @@ class Program
 
         // Introduction text and receiving user input
         Console.WriteLine("Welcome to The Slot Machine");
-        Console.WriteLine("Please write what type of lines you want to play");
-        Console.WriteLine("Horizontal, Vertical or Diagonal");
-        string userOption = Console.ReadLine().ToLower();
+        Console.WriteLine("Please write the letter of the line type you want to play");
+        Console.WriteLine("h - Horizontal");
+        Console.WriteLine("v - Vertical");
+        Console.WriteLine("d - Diagonal");
+        char userOption = Convert.ToChar(Console.ReadLine());
+        TypeOfLine castedUserOption = (TypeOfLine)userOption;
 
         // Checking if user option is invalid
-        while(userOption != "horizontal" && userOption != "vertical" && userOption != "diagonal")
+        while(castedUserOption != TypeOfLine.Horizontal && castedUserOption != TypeOfLine.Vertical &&
+            castedUserOption != TypeOfLine.Diagonal)
         {
             Console.WriteLine("Invalid Option");
-            userOption = Console.ReadLine().ToLower();
+            userOption = Convert.ToChar(Console.ReadLine());
+            castedUserOption = (TypeOfLine)userOption;
         }
 
         // Starting slot machine
@@ -30,15 +42,15 @@ class Program
             {
                 PrintSlotMachine(slotMachineGrid);
 
-                switch(userOption)
+                switch(castedUserOption)
                 {
-                    case "horizontal": CheckHorizontalWin(slotMachineGrid);
+                    case TypeOfLine.Horizontal: CheckHorizontalWin(slotMachineGrid);
                         break;
 
-                    case "vertical": CheckVerticalWin(slotMachineGrid);
+                    case TypeOfLine.Vertical: CheckVerticalWin(slotMachineGrid);
                         break;
 
-                    case "diagonal": CheckDiagonalWin(slotMachineGrid);
+                    case TypeOfLine.Diagonal: CheckDiagonalWin(slotMachineGrid);
                         break;
                 }
             }
@@ -54,9 +66,9 @@ class Program
     {
         Random rand = new Random();
         Console.Clear();
-        for (int row = 0; row < 3; row++)
+        for(int row = 0; row < 3; row++)
         {
-            for (int col = 0; col < 3; col++)
+            for(int col = 0; col < 3; col++)
             {
                 int randomNumber = rand.Next(0, 3);
                 Console.Write($"{array[row, col] = randomNumber} ");
@@ -67,7 +79,7 @@ class Program
 
     public static void CheckHorizontalWin(int[,] array)
     {
-        if ((array[0, 0] == array[0, 1]) && (array[0, 1] == array[0, 2]))
+        if((array[0, 0] == array[0, 1]) && (array[0, 1] == array[0, 2]))
         {
             Console.WriteLine("You won in top horizontal!");
             Console.WriteLine("Thanks for playing!");
@@ -79,7 +91,7 @@ class Program
             Console.WriteLine("Thanks for playing!");
             Environment.Exit(0);
         }
-        if ((array[2, 0] == array[2, 1]) && (array[2, 1] == array[2, 2]))
+        if((array[2, 0] == array[2, 1]) && (array[2, 1] == array[2, 2]))
         {
             Console.WriteLine("You won in bottom horizontal!");
             Console.WriteLine("Thanks for playing!");
@@ -93,19 +105,19 @@ class Program
 
     public static void CheckVerticalWin(int[,] array)
     {
-        if ((array[0, 0] == array[1, 0]) && (array[1, 0] == array[2, 0]))
+        if((array[0, 0] == array[1, 0]) && (array[1, 0] == array[2, 0]))
         {
             Console.WriteLine("You won in left vertical!");
             Console.WriteLine("Thanks for playing!");
             Environment.Exit(0);
         }
-        if ((array[0, 1] == array[1, 1]) && (array[1, 1] == array[2, 1]))
+        if((array[0, 1] == array[1, 1]) && (array[1, 1] == array[2, 1]))
         {
             Console.WriteLine("You won in middle vertical!");
             Console.WriteLine("Thanks for playing!");
             Environment.Exit(0);
         }
-        if ((array[0, 2] == array[1, 2]) && (array[1, 2] == array[2, 2]))
+        if((array[0, 2] == array[1, 2]) && (array[1, 2] == array[2, 2]))
         {
             Console.WriteLine("You won in right vertical!");
             Console.WriteLine("Thanks for playing!");
@@ -119,13 +131,13 @@ class Program
 
     public static void CheckDiagonalWin(int[,] array)
     {
-        if ((array[0, 0] == array[1, 1]) && (array[1, 1] == array[2, 2]))
+        if((array[0, 0] == array[1, 1]) && (array[1, 1] == array[2, 2]))
         {
             Console.WriteLine("You won in left diagonal!");
             Console.WriteLine("Thanks for playing!");
             Environment.Exit(0);
         }
-        if ((array[0, 2] == array[1, 1]) && (array[1, 1] == array[2, 0]))
+        if((array[0, 2] == array[1, 1]) && (array[1, 1] == array[2, 0]))
         {
             Console.WriteLine("You won in right diagonal!");
             Console.WriteLine("Thanks for playing!");
