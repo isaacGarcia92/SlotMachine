@@ -87,13 +87,13 @@ class Program
             Console.WriteLine("Thanks for playing!");
             Environment.Exit(0);
         }
-        if((array[1, 0] == array[1, 1]) && (array[1, 1] == array[1, 2]))
+        else if((array[1, 0] == array[1, 1]) && (array[1, 1] == array[1, 2]))
         {
             Console.WriteLine("You won in middle horizontal!");
             Console.WriteLine("Thanks for playing!");
             Environment.Exit(0);
         }
-        if((array[2, 0] == array[2, 1]) && (array[2, 1] == array[2, 2]))
+        else if ((array[2, 0] == array[2, 1]) && (array[2, 1] == array[2, 2]))
         {
             Console.WriteLine("You won in bottom horizontal!");
             Console.WriteLine("Thanks for playing!");
@@ -113,13 +113,13 @@ class Program
             Console.WriteLine("Thanks for playing!");
             Environment.Exit(0);
         }
-        if((array[0, 1] == array[1, 1]) && (array[1, 1] == array[2, 1]))
+        else if ((array[0, 1] == array[1, 1]) && (array[1, 1] == array[2, 1]))
         {
             Console.WriteLine("You won in middle vertical!");
             Console.WriteLine("Thanks for playing!");
             Environment.Exit(0);
         }
-        if((array[0, 2] == array[1, 2]) && (array[1, 2] == array[2, 2]))
+        else if ((array[0, 2] == array[1, 2]) && (array[1, 2] == array[2, 2]))
         {
             Console.WriteLine("You won in right vertical!");
             Console.WriteLine("Thanks for playing!");
@@ -139,7 +139,7 @@ class Program
             Console.WriteLine("Thanks for playing!");
             Environment.Exit(0);
         }
-        if((array[0, 2] == array[1, 1]) && (array[1, 1] == array[2, 0]))
+        else if ((array[0, 2] == array[1, 1]) && (array[1, 1] == array[2, 0]))
         {
             Console.WriteLine("You won in right diagonal!");
             Console.WriteLine("Thanks for playing!");
