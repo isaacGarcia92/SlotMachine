@@ -20,6 +20,7 @@ class Program
         Console.WriteLine("h - Horizontal");
         Console.WriteLine("v - Vertical");
         Console.WriteLine("d - Diagonal");
+
         char userOption = Convert.ToChar(Console.ReadLine());
         TypeOfLine castedUserOption = (TypeOfLine)userOption;
 
@@ -62,9 +63,10 @@ class Program
         }
     }
 
+    static Random rand = new Random();
+
     public static void PrintSlotMachine(int[,] array)
     {
-        Random rand = new Random();
         Console.Clear();
         for(int row = 0; row < 3; row++)
         {
