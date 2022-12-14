@@ -23,16 +23,18 @@ class Program
         Console.WriteLine("v - Vertical");
         Console.WriteLine("d - Diagonal");
 
-        char userOption = Convert.ToChar(Console.ReadLine());
-        TypeOfLine castedUserOption = (TypeOfLine)userOption;
+        string userOption = Console.ReadLine();
+        char firstCharacter = userOption[0];
+        TypeOfLine castedUserOption = (TypeOfLine)firstCharacter;
 
         // Checking if user option is invalid
         while(castedUserOption != TypeOfLine.Horizontal && castedUserOption != TypeOfLine.Vertical &&
             castedUserOption != TypeOfLine.Diagonal)
         {
             Console.WriteLine("Invalid Option");
-            userOption = Convert.ToChar(Console.ReadLine());
-            castedUserOption = (TypeOfLine)userOption;
+            userOption = Console.ReadLine();
+            firstCharacter = userOption[0];
+            castedUserOption = (TypeOfLine)firstCharacter;
         }
 
         // Starting slot machine
