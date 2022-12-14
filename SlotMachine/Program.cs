@@ -4,9 +4,9 @@ class Program
 {
     enum TypeOfLine
     {
-        Horizontal = 1,
-        Vertical = 2,
-        Diagonal = 3,
+        Horizontal = 'h',
+        Vertical = 'v',
+        Diagonal = 'd',
     }
 
     static Random rand = new Random();
@@ -19,16 +19,16 @@ class Program
         // Introduction text and receiving user input
         Console.WriteLine("Welcome to The Slot Machine");
         Console.WriteLine("Please write the letter of the line type you want to play");
-        Console.WriteLine("1 - Horizontal");
-        Console.WriteLine("2 - Vertical");
-        Console.WriteLine("3 - Diagonal");
+        Console.WriteLine("h - Horizontal");
+        Console.WriteLine("v - Vertical");
+        Console.WriteLine("d - Diagonal");
 
-        int userOption = Convert.ToInt32(Console.ReadLine());
+        char userOption = Convert.ToChar(Console.ReadLine());
         TypeOfLine castedUserOption = (TypeOfLine)userOption;
 
         // Checking if user option is invalid
         while(castedUserOption != TypeOfLine.Horizontal && castedUserOption != TypeOfLine.Vertical &&
-            castedUserOption != TypeOfLine.Diagonal && castedUserOption < 0)
+            castedUserOption != TypeOfLine.Diagonal)
         {
             Console.WriteLine("Invalid Option");
             userOption = Convert.ToChar(Console.ReadLine());
