@@ -9,6 +9,8 @@ class Program
         Diagonal = 'd',
     }
 
+    static Random rand = new Random();
+
     static void Main(string[] args)
     {
         // 2D Array
@@ -41,17 +43,86 @@ class Program
             ConsoleKey key = Console.ReadKey().Key;
             if(key == ConsoleKey.Spacebar)
             {
-                PrintSlotMachine(slotMachineGrid);
-
-                switch(castedUserOption)
+                Console.Clear();
+                for (int row = 0; row < 3; row++)
                 {
-                    case TypeOfLine.Horizontal: CheckHorizontalWin(slotMachineGrid);
+                    for (int col = 0; col < 3; col++)
+                    {
+                        int randomNumber = rand.Next(0, 3);
+                        Console.Write($"{slotMachineGrid[row, col] = randomNumber} ");
+                    }
+                    Console.WriteLine();
+                }
+
+                switch (castedUserOption)
+                {
+                    case TypeOfLine.Horizontal:
+                        if ((slotMachineGrid[0, 0] == slotMachineGrid[0, 1]) && (slotMachineGrid[0, 1] == slotMachineGrid[0, 2]))
+                        {
+                            Console.WriteLine("You won in top horizontal!");
+                            Console.WriteLine("Thanks for playing!");
+                            return;
+                        }
+                        else if ((slotMachineGrid[1, 0] == slotMachineGrid[1, 1]) && (slotMachineGrid[1, 1] == slotMachineGrid[1, 2]))
+                        {
+                            Console.WriteLine("You won in middle horizontal!");
+                            Console.WriteLine("Thanks for playing!");
+                            return;
+                        }
+                        else if ((slotMachineGrid[2, 0] == slotMachineGrid[2, 1]) && (slotMachineGrid[2, 1] == slotMachineGrid[2, 2]))
+                        {
+                            Console.WriteLine("You won in bottom horizontal!");
+                            Console.WriteLine("Thanks for playing!");
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Try again with spacebar to keep playing!");
+                        }
                         break;
 
-                    case TypeOfLine.Vertical: CheckVerticalWin(slotMachineGrid);
+                    case TypeOfLine.Vertical:
+                        if ((slotMachineGrid[0, 0] == slotMachineGrid[1, 0]) && (slotMachineGrid[1, 0] == slotMachineGrid[2, 0]))
+                        {
+                            Console.WriteLine("You won in left vertical!");
+                            Console.WriteLine("Thanks for playing!");
+                            return;
+                        }
+                        else if ((slotMachineGrid[0, 1] == slotMachineGrid[1, 1]) && (slotMachineGrid[1, 1] == slotMachineGrid[2, 1]))
+                        {
+                            Console.WriteLine("You won in middle vertical!");
+                            Console.WriteLine("Thanks for playing!");
+                            return;
+                        }
+                        else if ((slotMachineGrid[0, 2] == slotMachineGrid[1, 2]) && (slotMachineGrid[1, 2] == slotMachineGrid[2, 2]))
+                        {
+                            Console.WriteLine("You won in right vertical!");
+                            Console.WriteLine("Thanks for playing!");
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Try again with spacebar to keep playing!");
+                        }
                         break;
 
-                    case TypeOfLine.Diagonal: CheckDiagonalWin(slotMachineGrid);
+                    case TypeOfLine.Diagonal:
+                        if ((slotMachineGrid[0, 0] == slotMachineGrid[1, 1]) && (slotMachineGrid[1, 1] == slotMachineGrid[2, 2]))
+                        {
+                            Console.WriteLine("You won in left diagonal!");
+                            Console.WriteLine("Thanks for playing!");
+                            return;
+                        }
+                        else if ((slotMachineGrid[0, 2] == slotMachineGrid[1, 1]) && (slotMachineGrid[1, 1] == slotMachineGrid[2, 0]))
+                        {
+                            Console.WriteLine("You won in right diagonal!");
+                            Console.WriteLine("Thanks for playing!");
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Try again with spacebar to keep playing!");
+                        }
                         break;
                 }
             }
@@ -60,94 +131,6 @@ class Program
                 Console.WriteLine("Thanks for playing!");
                 return;
             }
-        }
-    }
-
-    static Random rand = new Random();
-
-    public static void PrintSlotMachine(int[,] array)
-    {
-        Console.Clear();
-        for(int row = 0; row < 3; row++)
-        {
-            for(int col = 0; col < 3; col++)
-            {
-                int randomNumber = rand.Next(0, 3);
-                Console.Write($"{array[row, col] = randomNumber} ");
-            }
-            Console.WriteLine();
-        }
-    }
-
-    public static void CheckHorizontalWin(int[,] array)
-    {
-        if((array[0, 0] == array[0, 1]) && (array[0, 1] == array[0, 2]))
-        {
-            Console.WriteLine("You won in top horizontal!");
-            Console.WriteLine("Thanks for playing!");
-            Environment.Exit(0);
-        }
-        else if((array[1, 0] == array[1, 1]) && (array[1, 1] == array[1, 2]))
-        {
-            Console.WriteLine("You won in middle horizontal!");
-            Console.WriteLine("Thanks for playing!");
-            Environment.Exit(0);
-        }
-        else if ((array[2, 0] == array[2, 1]) && (array[2, 1] == array[2, 2]))
-        {
-            Console.WriteLine("You won in bottom horizontal!");
-            Console.WriteLine("Thanks for playing!");
-            Environment.Exit(0);
-        }
-        else
-        {
-            Console.WriteLine("Try again with spacebar to keep playing!");
-        }
-    }
-
-    public static void CheckVerticalWin(int[,] array)
-    {
-        if((array[0, 0] == array[1, 0]) && (array[1, 0] == array[2, 0]))
-        {
-            Console.WriteLine("You won in left vertical!");
-            Console.WriteLine("Thanks for playing!");
-            Environment.Exit(0);
-        }
-        else if ((array[0, 1] == array[1, 1]) && (array[1, 1] == array[2, 1]))
-        {
-            Console.WriteLine("You won in middle vertical!");
-            Console.WriteLine("Thanks for playing!");
-            Environment.Exit(0);
-        }
-        else if ((array[0, 2] == array[1, 2]) && (array[1, 2] == array[2, 2]))
-        {
-            Console.WriteLine("You won in right vertical!");
-            Console.WriteLine("Thanks for playing!");
-            Environment.Exit(0);
-        }
-        else
-        {
-            Console.WriteLine("Try again with spacebar to keep playing!");
-        }
-    }
-
-    public static void CheckDiagonalWin(int[,] array)
-    {
-        if((array[0, 0] == array[1, 1]) && (array[1, 1] == array[2, 2]))
-        {
-            Console.WriteLine("You won in left diagonal!");
-            Console.WriteLine("Thanks for playing!");
-            Environment.Exit(0);
-        }
-        else if ((array[0, 2] == array[1, 1]) && (array[1, 1] == array[2, 0]))
-        {
-            Console.WriteLine("You won in right diagonal!");
-            Console.WriteLine("Thanks for playing!");
-            Environment.Exit(0);
-        }
-        else
-        {
-            Console.WriteLine("Try again with spacebar to keep playing!");
         }
     }
 }
