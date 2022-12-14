@@ -24,6 +24,12 @@ class Program
         Console.WriteLine("d - Diagonal");
 
         string userOption = Console.ReadLine();
+        while(userOption == "") // Checking if user input is an empty string
+        {
+            Console.WriteLine("Invalid Option");
+            userOption = Console.ReadLine();
+        }
+
         char firstCharacter = userOption[0];
         TypeOfLine castedUserOption = (TypeOfLine)firstCharacter;
 
