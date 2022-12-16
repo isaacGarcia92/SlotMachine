@@ -5,6 +5,18 @@ class Program
     const int ONE_DOLLAR = 1;
     static Random rand = new Random();
 
+    enum LineOptions
+    {
+        CenterHorizontal = 1,
+        TopAndBottomHorizontal = 2,
+        AllThreeHorizontal = 3,
+        AllHorizonalAndLeftVertical = 4,
+        AllHorizontalAndMiddleVertical = 5,
+        AllHorizontalAndVertical = 6,
+        AllHorizontal_VerticalAndLeftDiagonal = 7,
+        AllLines = 8,
+    }
+
     static void Main(string[] args)
     {
         // 2D Array
