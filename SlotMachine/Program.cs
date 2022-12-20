@@ -92,10 +92,20 @@ class Program
         // Starting slot machine
         Console.WriteLine("Type spacebar to start the slot machine");
 
-        while (true)
+        //Console Key variable
+        ConsoleKey key = Console.ReadKey().Key;
+
+        // Checking if input for slot machine is valid
+        while(key != ConsoleKey.Spacebar)
         {
-            ConsoleKey key = Console.ReadKey().Key;
-            if (key == ConsoleKey.Spacebar)
+            Console.WriteLine("Invalid Option!");
+            Console.WriteLine("Type spacebar to start the slot machine");
+            key = Console.ReadKey().Key;
+        }
+
+        while(true)
+        {
+            if(key == ConsoleKey.Spacebar)
             {
                 Console.Clear();
                 for (int row = 0; row < 3; row++)
@@ -395,6 +405,15 @@ class Program
             if(userAnswer == 2) break;
 
             Console.WriteLine("Type spacebar to start the slot machine");
+            key = Console.ReadKey().Key;
+
+            //Checking if input for slot machine is valid
+            while (key != ConsoleKey.Spacebar)
+            {
+                Console.WriteLine("Invalid Option!");
+                Console.WriteLine("Type spacebar to start the slot machine");
+                key = Console.ReadKey().Key;
+            }
         }
 
         Console.WriteLine($"You earned {playerMoney} USD");
