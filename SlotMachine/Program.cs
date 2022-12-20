@@ -42,9 +42,9 @@ class Program
 
         // Checking if user input is valid
         int userOption = 0;
-        bool inputIsANumber = false;
+        bool validInput = false;
 
-        while (!inputIsANumber)
+        while (!validInput)
         {
             if (!int.TryParse(Console.ReadLine(), out userOption) || userOption <= 0 || userOption > 8)
             {
@@ -53,7 +53,7 @@ class Program
             }
             else
             {
-                inputIsANumber = true;
+                validInput = true;
             }
         }
 
@@ -65,9 +65,9 @@ class Program
 
         //Checking if bet amount is valid
         int betAmount = 0;
-        bool betAmountIsANumber = false;
+        validInput = false;
 
-        while (!betAmountIsANumber)
+        while (!validInput)
         {
             if (!int.TryParse(Console.ReadLine(), out betAmount))
             {
@@ -81,7 +81,7 @@ class Program
             }
             else
             {
-                betAmountIsANumber = true;
+                validInput = true;
                 playerMoney -= betAmount;
             }
         }
@@ -326,9 +326,9 @@ class Program
             Console.WriteLine("1 - Yes");
             Console.WriteLine("2 - No");
             int userAnswer = 0;
-            bool isAnswerAChar = false;
+            validInput = false;
 
-            while(!isAnswerAChar)
+            while(!validInput)
             {
                 if (!int.TryParse(Console.ReadLine(), out userAnswer) || userAnswer <= 0 || userAnswer > 2)
                 {
@@ -337,7 +337,7 @@ class Program
                 }
                 else
                 {
-                    isAnswerAChar = true;
+                    validInput = true;
                 }
             }
             
@@ -357,8 +357,8 @@ class Program
                 Console.WriteLine($"Available credits: {playerMoney} USD");
                 Console.WriteLine("Please type the number of lines you want to play:");
                 userOption = 0;
-                inputIsANumber = false;
-                while (!inputIsANumber)
+                validInput = false;
+                while (!validInput)
                 {
                     if (!int.TryParse(Console.ReadLine(), out userOption) || userOption <= 0 || userOption > 8)
                     {
@@ -367,13 +367,13 @@ class Program
                     }
                     else
                     {
-                        inputIsANumber = true;
+                        validInput = true;
                     }
                 }
                 Console.WriteLine("Enter bet amount:");
                 betAmount = 0;
-                betAmountIsANumber = false;
-                while (!betAmountIsANumber)
+                validInput = false;
+                while (!validInput)
                 {
                     if (!int.TryParse(Console.ReadLine(), out betAmount))
                     {
@@ -387,7 +387,7 @@ class Program
                     }
                     else
                     {
-                        betAmountIsANumber = true;
+                        validInput = true;
                         playerMoney -= betAmount;
                     }
                 }
