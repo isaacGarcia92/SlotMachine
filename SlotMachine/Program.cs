@@ -121,6 +121,10 @@ class Program
                             Console.WriteLine("You won in middle horizontal!");
                             playerMoney += betAmount * userOption;
                         }
+                        else
+                        {
+                            Console.WriteLine("You lost!");
+                        }
                         break;
 
                     case LineOptions.TopAndBottomHorizontal:
@@ -133,6 +137,10 @@ class Program
                         {
                             Console.WriteLine("You won in bottom horizontal!");
                             playerMoney += betAmount * userOption;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You lost!");
                         }
                         break;
 
@@ -151,6 +159,10 @@ class Program
                         {
                             Console.WriteLine("You won in bottom horizontal!");
                             playerMoney += betAmount * userOption;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You lost!");
                         }
                         break;
 
@@ -174,6 +186,10 @@ class Program
                         {
                             Console.WriteLine("You won in left vertical!");
                             playerMoney += betAmount * userOption;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You lost!");
                         }
                         break;
 
@@ -202,6 +218,10 @@ class Program
                         {
                             Console.WriteLine("You won in middle vertical!");
                             playerMoney += betAmount * userOption;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You lost!");
                         }
                         break;
 
@@ -235,6 +255,10 @@ class Program
                         {
                             Console.WriteLine("You won in right vertical!");
                             playerMoney += betAmount * userOption;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You lost!");
                         }
                         break;
 
@@ -273,6 +297,10 @@ class Program
                         {
                             Console.WriteLine("You won in left diagonal!");
                             playerMoney += betAmount * userOption;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You lost!");
                         }
                         break;
 
@@ -316,6 +344,10 @@ class Program
                         {
                             Console.WriteLine("You won in right diagonal!");
                             playerMoney += betAmount * userOption;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You lost!");
                         }
                         break;
                 }
