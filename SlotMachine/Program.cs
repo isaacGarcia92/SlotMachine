@@ -37,70 +37,65 @@ class Program
         Console.WriteLine("8 - All Lines");
         Console.WriteLine();
 
-        // Choosing lines to play
-        Console.WriteLine("Please type the number of lines you want to play:");
+        int userOption;
 
         // Checking if user input is valid
-        int userOption = 0;
-        bool validInput = false;
-
-        while (!validInput)
+        while (true)
         {
+            Console.WriteLine("Please type the number of lines you want to play:");
             if (!int.TryParse(Console.ReadLine(), out userOption) || userOption <= 0 || userOption > 8)
             {
                 Console.WriteLine("Invalid Option!");
-                Console.WriteLine("Please type the number of lines you want to play:");
             }
             else
             {
-                validInput = true;
+                break;
             }
         }
 
         // Player's initial money
         int playerMoney = INITIAL_CREDITS;
 
-        // Enter user's bet amount
-        Console.WriteLine("Enter bet amount:");
+        int betAmount;
 
         //Checking if bet amount is valid
-        int betAmount = 0;
-        validInput = false;
-
-        while (!validInput)
+        while (true)
         {
+            Console.WriteLine("Enter bet amount:");
             if (!int.TryParse(Console.ReadLine(), out betAmount))
             {
                 Console.WriteLine("Invalid Option!");
-                Console.WriteLine("Enter bet amount:");
             }
             else if (betAmount > playerMoney)
             {
                 Console.WriteLine("Bet is greater than available credits!");
-                Console.WriteLine("Enter bet amount:");
             }
             else
             {
-                validInput = true;
-                playerMoney -= betAmount;
+                break;
             }
         }
+        playerMoney -= betAmount;
 
         //Casting user input to enum type
         LineOptions castedUserOption = (LineOptions)userOption;
 
-        // Starting slot machine
-        Console.WriteLine("Type spacebar to start the slot machine");
-
         //Console Key variable
-        ConsoleKey key = Console.ReadKey().Key;
+        ConsoleKey key;
 
         // Checking if input for slot machine is valid
-        while(key != ConsoleKey.Spacebar)
+        while(true)
         {
-            Console.WriteLine("Invalid Option!");
             Console.WriteLine("Type spacebar to start the slot machine");
             key = Console.ReadKey().Key;
+            if (key != ConsoleKey.Spacebar)
+            {
+                Console.WriteLine("Invalid Option!");
+            }
+            else
+            {
+                break;
+            }
         }
 
         while(true)
@@ -325,7 +320,7 @@ class Program
                         break;
                 }
             }
-            if (playerMoney == 0)
+            if (playerMoney <= 0)
             {
                 Console.WriteLine("You do not have more available credits!");
                 break;
@@ -335,19 +330,17 @@ class Program
             Console.WriteLine("Do you want to keep playing?");
             Console.WriteLine("1 - Yes");
             Console.WriteLine("2 - No");
-            int userAnswer = 0;
-            validInput = false;
+            int userAnswer;
 
-            while(!validInput)
+            while(true)
             {
                 if (!int.TryParse(Console.ReadLine(), out userAnswer) || userAnswer <= 0 || userAnswer > 2)
                 {
                     Console.WriteLine("Invalid Option!");
-                    Console.WriteLine("Do you want to keep playing? y/n");
                 }
                 else
                 {
-                    validInput = true;
+                    break;
                 }
             }
             
@@ -365,54 +358,54 @@ class Program
                 Console.WriteLine("8 - All Lines");
                 Console.WriteLine();
                 Console.WriteLine($"Available credits: {playerMoney} USD");
-                Console.WriteLine("Please type the number of lines you want to play:");
-                userOption = 0;
-                validInput = false;
-                while (!validInput)
+
+                while (true)
                 {
+                    Console.WriteLine("Please type the number of lines you want to play:");
                     if (!int.TryParse(Console.ReadLine(), out userOption) || userOption <= 0 || userOption > 8)
                     {
                         Console.WriteLine("Invalid Option!");
-                        Console.WriteLine("Please type the number of lines you want to play:");
                     }
                     else
                     {
-                        validInput = true;
+                        break;
                     }
                 }
-                Console.WriteLine("Enter bet amount:");
-                betAmount = 0;
-                validInput = false;
-                while (!validInput)
+
+                while (true)
                 {
+                    Console.WriteLine("Enter bet amount:");
                     if (!int.TryParse(Console.ReadLine(), out betAmount))
                     {
                         Console.WriteLine("Invalid Option!");
-                        Console.WriteLine("Enter bet amount:");
                     }
                     else if (betAmount > playerMoney)
                     {
                         Console.WriteLine("Bet is greater than available credits!");
-                        Console.WriteLine("Enter bet amount:");
                     }
                     else
                     {
-                        validInput = true;
-                        playerMoney -= betAmount;
+                        break;                        
                     }
                 }
+                playerMoney -= betAmount;
+
             }
             if(userAnswer == 2) break;
 
-            Console.WriteLine("Type spacebar to start the slot machine");
-            key = Console.ReadKey().Key;
-
             //Checking if input for slot machine is valid
-            while (key != ConsoleKey.Spacebar)
+            while (true)
             {
-                Console.WriteLine("Invalid Option!");
                 Console.WriteLine("Type spacebar to start the slot machine");
                 key = Console.ReadKey().Key;
+                if (key != ConsoleKey.Spacebar)
+                {
+                    Console.WriteLine("Invalid Option!");
+                }
+                else
+                {
+                    break;
+                }
             }
         }
 
