@@ -77,6 +77,10 @@ class Program
                 {
                     Console.WriteLine("Bet is greater than available credits!");
                 }
+                else if (betAmount <= 0)
+                {
+                    Console.WriteLine("Invalid Option!");
+                }
                 else
                 {
                     break;
