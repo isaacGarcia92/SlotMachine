@@ -69,17 +69,13 @@ class Program
             while (true)
             {
                 Console.WriteLine("Enter bet amount:");
-                if (!int.TryParse(Console.ReadLine(), out betAmount))
+                if (!int.TryParse(Console.ReadLine(), out betAmount) || betAmount <= 0)
                 {
                     Console.WriteLine("Invalid Option!");
                 }
                 else if (betAmount > playerMoney)
                 {
                     Console.WriteLine("Bet is greater than available credits!");
-                }
-                else if (betAmount <= 0)
-                {
-                    Console.WriteLine("Invalid Option!");
                 }
                 else
                 {
